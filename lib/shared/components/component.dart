@@ -159,7 +159,9 @@ required VoidCallback onPressed
         ),
       )),
 );
-Widget defualtFormField()=>Container(
+Widget defualtFormField({
+String Function(String?)?validator
+})=>Container(
   decoration: BoxDecoration(
       color: Colors.white
   ),
@@ -167,6 +169,7 @@ Widget defualtFormField()=>Container(
     padding: const EdgeInsets.all(10.0),
     child: TextFormField(
       onTap: (){},
+      validator:validator ,
       controller: TextEditingController(),
       decoration: InputDecoration(
           labelText: 'Email',
