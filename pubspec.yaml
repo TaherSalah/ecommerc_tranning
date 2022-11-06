@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons:
   hexcolor:
+  carousel_slider:
   flutter_svg:
   smooth_page_indicator:
   anim_search_bar:
