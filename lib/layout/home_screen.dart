@@ -62,6 +62,20 @@ class ShopHomeScreen extends StatelessWidget {
             child: Stack(
               children: [
                 Image.asset('assets/images/Rectangle 17.png',fit: BoxFit.cover,width: double.infinity,height: double.infinity,),
+                Positioned(
+                  top:-6,
+  left: 255,
+                  child:
+                  Image.asset('assets/images/top left veg.png',height: 60,width: 90,),
+
+                ),
+                Positioned(
+                  bottom:-8,
+                  left: 290,
+                  child:
+                  Image.asset('assets/images/pngfuel bottom left.png',height: 60,width: 50,),
+
+                ),
                 Row(
                   children: [
                     Image.asset('assets/images/right veg.png'),
@@ -69,12 +83,18 @@ class ShopHomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Fresh Vegetables',style: TextStyle(fontFamily: 'clon',fontSize: 17,fontWeight: FontWeight.w400),),
-                        Text('Get Up To 40% OFF',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500),),
+                        SizedBox(height: 6,),
+                        Text('Get Up To 40% OFF',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,fontFamily: 'air',color: HexColor('#53B175')),),
 
                       ],
-                    )
+                    ),
+
+
+
                   ],
-                )
+                ),
+
+
               ],
             ),
           ),

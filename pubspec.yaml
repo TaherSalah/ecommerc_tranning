@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons:
   hexcolor:
   flutter_svg:
+  smooth_page_indicator:
   anim_search_bar:
 dev_dependencies:
   flutter_test:
@@ -80,7 +81,7 @@ flutter:
     - family: clon
       fonts:
         - asset: assets/fonts/Aclonica-Regular.ttf
-    - family: clon
+    - family: air
       fonts:
         - asset: assets/fonts/AirbnbCereal_W_Md.otf
   #       - asset: fonts/Schyler-Italic.ttf
