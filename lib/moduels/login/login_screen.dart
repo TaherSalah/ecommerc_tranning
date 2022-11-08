@@ -163,11 +163,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           context: context,
                           name: 'Log in',
                           onPressed: () {
-                            if(formKey.currentState!.validate()){
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const ShopHomeScreen()));
 
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const ShopHomeScreen()));
-
-                            }
+                            // if(formKey.currentState!.validate()){
+                            //
+                            //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const ShopHomeScreen()));
+                            //
+                            // }
                           },
                           color: Colors.white),
                       const SizedBox(

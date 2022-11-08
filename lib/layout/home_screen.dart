@@ -39,7 +39,7 @@ class ShopHomeScreen extends StatelessWidget {
                   )
                 ],
               ),
-              Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
               Container(
                   height: 50,
                   width: 300,
@@ -57,7 +57,7 @@ class ShopHomeScreen extends StatelessWidget {
                             color: HexColor('7C7C7C'),
                             fontWeight: FontWeight.w600)),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Container(
@@ -137,14 +137,14 @@ class ShopHomeScreen extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               'Fresh Vegetables',
                               style: TextStyle(
                                   fontFamily: 'clon',
                                   fontSize: 17,
                                   fontWeight: FontWeight.w400),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 6,
                             ),
                             Text(
@@ -162,7 +162,7 @@ class ShopHomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Row(
@@ -174,7 +174,42 @@ class ShopHomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: HexColor('#53B175')),
+                      )),
+                ],
+              ),
+              Padding(padding:EdgeInsets.symmetric(vertical: 10) ),
+              Container(
+                height: 240,
+                child: ListView.separated(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => categoriesBuilder(),
+                    separatorBuilder: (context,index)=>SizedBox(width: 8,),
+                    itemCount: 5),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Best Selling',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const Spacer(),
                   TextButton(
                       onPressed: () {},
                       child: Text(
@@ -187,23 +222,183 @@ class ShopHomeScreen extends StatelessWidget {
                 ],
               ),
               Container(
-                height: 250,
-                width: 173,
-                decoration: BoxDecoration(
-                  color: HexColor('#E5E5E5'),
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Column(
-                  children: [
-                    SvgPicture.asset('assets/images/banan.svg'),
-Text('Organic Bananas',),
-                  ],
-                ),
-              )
+                height: 240,
+                child: ListView.separated(
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => bestSealingBuilder(),
+                    separatorBuilder: (context,index)=>SizedBox(width: 8,),
+                    itemCount: 5),
+              ),
+
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget categoriesBuilder() => Container(
+        height: 240,
+        width: 170,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: HexColor('#E2E2E2'))),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.asset(
+                'assets/images/ba.jpg',
+                height: 70,
+                width: 100,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Organic Bananas',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.5),
+                  child: Text(
+                    '7pcs, Priceg',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: HexColor('#7C7C7C'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                children: [
+                  Text(
+                    '\$ 4.99',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: HexColor('#181725'),
+                    ),
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      print('object');
+                    },
+                    child: Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(13.5),
+                            color: HexColor('#53B175')),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              'assets/images/Vector.svg',
+                              height: 20,
+                              width: 20,
+                            )
+                          ],
+                        )),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+
+  Widget bestSealingBuilder() => Container(
+    height: 240,
+    width: 170,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: HexColor('#E2E2E2'))),
+    child: Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Image.asset(
+            'assets/images/falfel.jpg',
+            height: 70,
+            width: 100,
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Bell Pepper Red',
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.5),
+              child: Text(
+                '1kg, Priceg',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: HexColor('#7C7C7C'),
+                ),
+              ),
+            ),
+          ],
+        ),
+        const Spacer(),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            children: [
+              Text(
+                '\$ 4.99',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: HexColor('#181725'),
+                ),
+              ),
+              const Spacer(),
+              InkWell(
+                onTap: () {
+                  print('object');
+                },
+                child: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13.5),
+                        color: HexColor('#53B175')),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/Vector.svg',
+                          height: 20,
+                          width: 20,
+                        )
+                      ],
+                    )),
+              )
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+
 }

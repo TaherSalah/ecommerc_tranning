@@ -38,9 +38,9 @@ dependencies:
   cupertino_icons:
   hexcolor:
   carousel_slider:
-  flutter_svg:
   smooth_page_indicator:
   anim_search_bar:
+  flutter_svg:
 dev_dependencies:
   flutter_test:
     sdk: flutter
