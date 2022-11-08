@@ -6,13 +6,20 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../models/groceries/groceries_model.dart';
 import '../shared/components/styles/color.dart';
 
 class ShopHomeScreen extends StatelessWidget {
-  const ShopHomeScreen({Key? key}) : super(key: key);
+  const ShopHomeScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
+    List<ProdType>itemsType=[
+      ProdType('assets/images/Pulses.png', 'Pulses', '#F8A44C'),
+      ProdType('assets/images/rice.png', 'Rice', '#53B175'),
+      ProdType('assets/images/Pulses.png', 'Pulses', '#F8A44C'),
+      ProdType('assets/images/rice.png', 'Rice', '#53B175')];
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -231,6 +238,41 @@ class ShopHomeScreen extends StatelessWidget {
                     separatorBuilder: (context,index)=>SizedBox(width: 8,),
                     itemCount: 5),
               ),
+              const SizedBox(
+                height: 50,
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'Groceries',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const Spacer(),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: HexColor('#53B175')),
+                      )),
+                ],
+              ),
+
+              Container(
+                height: 120,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                    itemBuilder: (context,index)=>groceriesBuilder(model: ),
+                    separatorBuilder: (context,index)=> SizedBox(width: 10,),
+                    itemCount: itemsType.length
+                ),
+              )
+
 
             ],
           ),
@@ -400,5 +442,22 @@ class ShopHomeScreen extends StatelessWidget {
       ],
     ),
   );
+  Widget groceriesBuilder({  ProdType? model}) =>  Container(
+    height: 95,
+    width: 220,
+    decoration: BoxDecoration(
+      color: HexColor(model!.backgroundColor).withOpacity(0.4),
+      borderRadius: BorderRadius.circular(18),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(model!.image,width: 65,height: 65,),
+        SizedBox(width: 15,),
+        Text(model!.text,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20,),)
+      ],
+    ),
+  );
+
 
 }
