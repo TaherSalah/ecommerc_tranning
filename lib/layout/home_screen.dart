@@ -4,22 +4,13 @@ import 'package:ecommerc/shared/components/ui_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../models/groceries/groceries_model.dart';
-import '../shared/components/styles/color.dart';
 
 class ShopHomeScreen extends StatelessWidget {
   const ShopHomeScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    List<ProdType>itemsType=[
-      ProdType('assets/images/Pulses.png', 'Pulses', '#F8A44C'),
-      ProdType('assets/images/rice.png', 'Rice', '#53B175'),
-      ProdType('assets/images/Pulses.png', 'Pulses', '#F8A44C'),
-      ProdType('assets/images/rice.png', 'Rice', '#53B175')];
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -193,15 +184,17 @@ class ShopHomeScreen extends StatelessWidget {
                       )),
                 ],
               ),
-              Padding(padding:EdgeInsets.symmetric(vertical: 10) ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
               Container(
                 height: 240,
                 child: ListView.separated(
-                  physics: BouncingScrollPhysics(),
-                  shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => categoriesBuilder(),
-                    separatorBuilder: (context,index)=>SizedBox(width: 8,),
+                    separatorBuilder: (context, index) => const SizedBox(
+                          width: 8,
+                        ),
                     itemCount: 5),
               ),
               const SizedBox(
@@ -231,11 +224,13 @@ class ShopHomeScreen extends StatelessWidget {
               Container(
                 height: 240,
                 child: ListView.separated(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => bestSealingBuilder(),
-                    separatorBuilder: (context,index)=>SizedBox(width: 8,),
+                    separatorBuilder: (context, index) => const SizedBox(
+                          width: 8,
+                        ),
                     itemCount: 5),
               ),
               const SizedBox(
@@ -262,18 +257,55 @@ class ShopHomeScreen extends StatelessWidget {
                       )),
                 ],
               ),
-
               Container(
                 height: 120,
                 child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                    itemBuilder: (context,index)=>groceriesBuilder(model: ),
-                    separatorBuilder: (context,index)=> SizedBox(width: 10,),
-                    itemCount: itemsType.length
-                ),
+                    physics: const BouncingScrollPhysics(),
+
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => groceriesBuilder(
+                        itemsType[index].image,
+                        itemsType[index].text,
+                        itemsType[index].backgroundColor),
+                    separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                    itemCount: itemsType.length),
+              ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+              SizedBox(
+                height: 240,
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => meatBuilder(meatItemsType[index].image,meatItemsType[index].titleText,meatItemsType[index].subTitleText,),
+                    separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                    itemCount:meatItemsType.length),
+              ),
+              BottomNavigationBar(
+                backgroundColor: Colors.white,
+                items:const <BottomNavigationBarItem> [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home_rounded),
+                    label: 'Shop',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home_rounded),
+                    label: 'Shop',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home_rounded),
+                    label: 'Shop',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home_rounded),
+                    label: 'Shop',
+                  ),
+
+                ],
               )
-
-
             ],
           ),
         ),
@@ -361,103 +393,192 @@ class ShopHomeScreen extends StatelessWidget {
           ],
         ),
       );
-
   Widget bestSealingBuilder() => Container(
-    height: 240,
-    width: 170,
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: HexColor('#E2E2E2'))),
-    child: Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Image.asset(
-            'assets/images/falfel.jpg',
-            height: 70,
-            width: 100,
-          ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        height: 240,
+        width: 170,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: HexColor('#E2E2E2'))),
+        child: Column(
           children: [
-            const Text(
-              'Bell Pepper Red',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.5),
-              child: Text(
-                '1kg, Priceg',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: HexColor('#7C7C7C'),
+              padding: const EdgeInsets.all(20.0),
+              child: Image.asset(
+                'assets/images/falfel.jpg',
+                height: 70,
+                width: 100,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Bell Pepper Red',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.5),
+                  child: Text(
+                    '1kg, Priceg',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: HexColor('#7C7C7C'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                children: [
+                  Text(
+                    '\$ 4.99',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: HexColor('#181725'),
+                    ),
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      print('object');
+                    },
+                    child: Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(13.5),
+                            color: HexColor('#53B175')),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              'assets/images/Vector.svg',
+                              height: 20,
+                              width: 20,
+                            )
+                          ],
+                        )),
+                  )
+                ],
               ),
             ),
           ],
         ),
-        const Spacer(),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Row(
-            children: [
-              Text(
-                '\$ 4.99',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: HexColor('#181725'),
-                ),
-              ),
-              const Spacer(),
-              InkWell(
-                onTap: () {
-                  print('object');
-                },
-                child: Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13.5),
-                        color: HexColor('#53B175')),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/Vector.svg',
-                          height: 20,
-                          width: 20,
-                        )
-                      ],
-                    )),
-              )
-            ],
-          ),
+      );
+  Widget groceriesBuilder(String image, String text, String color) => Container(
+        height: 95,
+        width: 220,
+        decoration: BoxDecoration(
+          color: HexColor(color).withOpacity(0.4),
+          borderRadius: BorderRadius.circular(18),
         ),
-      ],
-    ),
-  );
-  Widget groceriesBuilder({  ProdType? model}) =>  Container(
-    height: 95,
-    width: 220,
-    decoration: BoxDecoration(
-      color: HexColor(model!.backgroundColor).withOpacity(0.4),
-      borderRadius: BorderRadius.circular(18),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(model!.image,width: 65,height: 65,),
-        SizedBox(width: 15,),
-        Text(model!.text,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20,),)
-      ],
-    ),
-  );
-
-
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              image,
+              width: 65,
+              height: 65,
+            ),
+            const SizedBox(
+              width: 15,
+            ),
+            Text(
+              text,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+              ),
+            )
+          ],
+        ),
+      );
+  Widget meatBuilder(String image, String titleText,String subTitleText,) => Container(
+        height: 240,
+        width: 170,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: HexColor('#E2E2E2'))),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.asset(
+               image,
+                height: 70,
+                width: 100,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                 Text(
+                  titleText,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.5),
+                  child: Text(
+                    subTitleText,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: HexColor('#7C7C7C'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                children: [
+                  Text(
+                    '\$ 4.99',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: HexColor('#181725'),
+                    ),
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      print('object');
+                    },
+                    child: Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(13.5),
+                            color: HexColor('#53B175')),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              'assets/images/Vector.svg',
+                              height: 20,
+                              width: 20,
+                            )
+                          ],
+                        )),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
 }
