@@ -261,7 +261,6 @@ class ShopHomeScreen extends StatelessWidget {
                 height: 120,
                 child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
-
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => groceriesBuilder(
                         itemsType[index].image,
@@ -276,34 +275,63 @@ class ShopHomeScreen extends StatelessWidget {
               SizedBox(
                 height: 240,
                 child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => meatBuilder(meatItemsType[index].image,meatItemsType[index].titleText,meatItemsType[index].subTitleText,),
+                    itemBuilder: (context, index) => meatBuilder(
+                          meatItemsType[index].image,
+                          meatItemsType[index].titleText,
+                          meatItemsType[index].subTitleText,
+                        ),
                     separatorBuilder: (context, index) => const SizedBox(
                           width: 10,
                         ),
-                    itemCount:meatItemsType.length),
+                    itemCount: meatItemsType.length),
               ),
-              BottomNavigationBar(
-                backgroundColor: Colors.white,
-                items:const <BottomNavigationBarItem> [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home_rounded),
-                    label: 'Shop',
+              Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
+                    backgroundColor: Colors.white,
+                    items: <BottomNavigationBarItem>[
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.home_rounded,
+                          color: HexColor('#181725'),
+                        ),
+                        label: 'Shop',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.explore,
+                          color: HexColor('#181725'),
+                        ),
+                        label: 'explore',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.shopping_cart_rounded,
+                          color: HexColor('#181725'),
+                        ),
+                        label: 'Shop',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.favorite_rounded,
+                          color: HexColor('#181725'),
+                        ),
+                        label: 'Shop',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.person,
+                          color: HexColor('#181725'),
+                        ),
+                        label: 'Shop',
+                      ),
+                    ],
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home_rounded),
-                    label: 'Shop',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home_rounded),
-                    label: 'Shop',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home_rounded),
-                    label: 'Shop',
-                  ),
-
                 ],
               )
             ],
@@ -501,7 +529,12 @@ class ShopHomeScreen extends StatelessWidget {
           ],
         ),
       );
-  Widget meatBuilder(String image, String titleText,String subTitleText,) => Container(
+  Widget meatBuilder(
+    String image,
+    String titleText,
+    String subTitleText,
+  ) =>
+      Container(
         height: 240,
         width: 170,
         decoration: BoxDecoration(
@@ -512,7 +545,7 @@ class ShopHomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Image.asset(
-               image,
+                image,
                 height: 70,
                 width: 100,
               ),
@@ -520,7 +553,7 @@ class ShopHomeScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Text(
+                Text(
                   titleText,
                   style: const TextStyle(
                       fontSize: 16,
