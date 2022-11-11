@@ -39,7 +39,9 @@ dependencies:
   hexcolor:
   carousel_slider:
   smooth_page_indicator:
+  persistent_bottom_nav_bar:
   anim_search_bar:
+  curved_navigation_bar:
   flutter_svg:
 dev_dependencies:
   flutter_test:
