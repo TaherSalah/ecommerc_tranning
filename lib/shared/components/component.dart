@@ -179,3 +179,8 @@ String Function(String?)?validator
     ),
   ) ,
 );
+
+void navigate(context,widget){
+  {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>widget));}
+
+}

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:ecommerc/moduels/details/details_screen.dart';
 import 'package:ecommerc/shared/components/ui_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -248,7 +249,8 @@ class ShopHomeScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: ()
+                         {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const DetailsScreen()));},
                       child: Text(
                         'See All',
                         style: TextStyle(
