@@ -13,6 +13,7 @@ class ShopHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      bottomNavigationBar: defualtBottomNavBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -288,52 +289,6 @@ class ShopHomeScreen extends StatelessWidget {
                     itemCount: meatItemsType.length),
               ),
               Padding(padding: EdgeInsets.symmetric(vertical: 15)),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  BottomNavigationBar(
-                    type: BottomNavigationBarType.fixed,
-                    backgroundColor: Colors.white,
-                    items: <BottomNavigationBarItem>[
-                      BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.home_rounded,
-                          color: HexColor('#181725'),
-                        ),
-                        label: 'Shop',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.explore,
-                          color: HexColor('#181725'),
-                        ),
-                        label: 'explore',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.shopping_cart_rounded,
-                          color: HexColor('#181725'),
-                        ),
-                        label: 'Shop',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.favorite_rounded,
-                          color: HexColor('#181725'),
-                        ),
-                        label: 'Shop',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.person,
-                          color: HexColor('#181725'),
-                        ),
-                        label: 'Shop',
-                      ),
-                    ],
-                  ),
-                ],
-              )
             ],
           ),
         ),
