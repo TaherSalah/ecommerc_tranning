@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:ecommerc/moduels/details/details_screen.dart';
+import 'package:ecommerc/shared/components/component.dart';
 import 'package:ecommerc/shared/components/ui_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -193,7 +194,13 @@ class ShopHomeScreen extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => categoriesBuilder(),
+                    itemBuilder: (context, index) =>
+                        InkWell(
+                          onTap: (){
+                            navigate(context, DetailsScreen());
+
+                          },
+                            child: categoriesBuilder()),
                     separatorBuilder: (context, index) => const SizedBox(
                           width: 8,
                         ),
@@ -229,7 +236,11 @@ class ShopHomeScreen extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => bestSealingBuilder(),
+                    itemBuilder: (context, index) => InkWell(
+                        onTap: () {
+                          navigate(context, const DetailsScreen());
+                        },
+                        child: bestSealingBuilder()),
                     separatorBuilder: (context, index) => const SizedBox(
                           width: 8,
                         ),
@@ -249,8 +260,12 @@ class ShopHomeScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   TextButton(
-                      onPressed: ()
-                         {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const DetailsScreen()));},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DetailsScreen()));
+                      },
                       child: Text(
                         'See All',
                         style: TextStyle(
@@ -265,10 +280,15 @@ class ShopHomeScreen extends StatelessWidget {
                 child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => groceriesBuilder(
-                        itemsType[index].image,
-                        itemsType[index].text,
-                        itemsType[index].backgroundColor),
+                    itemBuilder: (context, index) => InkWell(
+                          onTap: () {
+                            navigate(context, DetailsScreen());
+                          },
+                          child: groceriesBuilder(
+                              itemsType[index].image,
+                              itemsType[index].text,
+                              itemsType[index].backgroundColor),
+                        ),
                     separatorBuilder: (context, index) => const SizedBox(
                           width: 10,
                         ),
@@ -280,10 +300,15 @@ class ShopHomeScreen extends StatelessWidget {
                 child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => meatBuilder(
-                          meatItemsType[index].image,
-                          meatItemsType[index].titleText,
-                          meatItemsType[index].subTitleText,
+                    itemBuilder: (context, index) => InkWell(
+                          onTap: () {
+                            navigate(context, DetailsScreen());
+                          },
+                          child: meatBuilder(
+                            meatItemsType[index].image,
+                            meatItemsType[index].titleText,
+                            meatItemsType[index].subTitleText,
+                          ),
                         ),
                     separatorBuilder: (context, index) => const SizedBox(
                           width: 10,

@@ -25,7 +25,8 @@ Widget shopLogo() => Center(
 
 Widget defualtBottomNavBar() => BottomNavigationBar(
       elevation: 10.0,
-      onTap: (index) {},
+      onTap: (index) {
+      },
       selectedItemColor: HexColor('#53B175'),
       selectedIconTheme: IconThemeData(color: HexColor('#53B175')),
       unselectedLabelStyle: TextStyle(
